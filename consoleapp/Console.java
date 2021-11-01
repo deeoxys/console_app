@@ -1,4 +1,5 @@
 package consoleapp;
+
 import java.util.Scanner;
 
 public class Console {
@@ -15,11 +16,6 @@ public class Console {
             
             String[] input = sc.nextLine().split("\\s+");
             String[] parameters;
-            
-            // for (String s : input) {
-            //     System.out.println(s + " !");
-            // }
-            // System.out.println("len = " + input.length);
 
             if (input.length > 1) {
                 parameters = new String[input.length - 1];
@@ -31,6 +27,7 @@ public class Console {
             }
 
             Command command = CommandManager.getCommandByName(input[0]);
+            if (command == null) command = CommandManager.getCommandByAlias(input[0]);
 
             if (command != null) {
                 command.execute(parameters);

@@ -1,5 +1,7 @@
 package consoleapp.commands;
 
+import java.util.Arrays;
+
 import consoleapp.Command;
 
 public class Cowsay extends Command {
@@ -10,21 +12,30 @@ public class Cowsay extends Command {
 
     @Override
     public void execute(String[] parameters) {
-
         String message = "";
         for (String parameter: parameters) {
             message += " " + parameter;
         }
 
-        System.out.println(" ________________________________\n" +
+        String top = " ";
+        String bot = " ";
+        for (int i = 0; i < message.length() + 2; i++) {
+            top += "_";
+            bot += "-";
+        }
+        top += "\n";
+        bot += "\n";
+
+        System.out.println(top +
                 "< " + message + " >\n" +
-                " --------------------------------\n" +
+                bot +
                 "        \\   ^__^\n" +
                 "         \\  (oo)\\_______\n" +
                 "            (__)\\       )\\/\\\n" +
                 "                ||----w |\n" +
                 "                ||     ||");
-        
+
+
     }
     
 }
